@@ -3,8 +3,13 @@ import React, { Component } from "react";
 // import FormInput from "../form-input/form-input.component";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import LoginIcon from "@mui/icons-material/Login";
+import GoogleIcon from "@mui/icons-material/Google";
 
+import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
 import "./sign-in.styles.scss";
+
+// import swal from "sweetalert";
 
 class SignIn extends Component {
   constructor(props) {
@@ -16,9 +21,15 @@ class SignIn extends Component {
     };
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
-    this.setState({ email: "", password: "" });
+    const { email, password } = this.state;
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      this.setState({ email: "", password: "" });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   handleChange = (event) => {
@@ -41,6 +52,7 @@ class SignIn extends Component {
             onChange={this.handleChange}
             required
           />
+          <br />
           <TextField
             label="Password"
             variant="standard"
@@ -52,9 +64,27 @@ class SignIn extends Component {
           />
           <br />
           <br />
-          <Button type="submit" variant="contained">
-            SIGN IN
-          </Button>
+
+          <div className="buttons">
+            <Button
+              type="submit"
+              variant="contained"
+              startIcon={<LoginIcon />}
+              size="medium"
+            >
+              Sign In
+            </Button>
+            <Button
+              variant="contained"
+              startIcon={<GoogleIcon />}
+              size="medium"
+              onClick={signInWithGoogle}
+              color="error"
+              style={{ marginLeft: 5 }}
+            >
+              Sign In with Google
+            </Button>
+          </div>
         </form>
       </div>
     );
