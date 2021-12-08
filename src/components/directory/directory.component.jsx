@@ -28,18 +28,20 @@ class Directory extends Component {
           linkUrl: "shop/sneakers",
         },
         {
-          title: "womens",
-          imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
-          size: "large",
-          id: 4,
-          linkUrl: "shop/womens",
-        },
-        {
           title: "mens",
-          imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
+          imageUrl:
+            "https://www.thefashionisto.com/wp-content/uploads/2020/05/Guy-in-Colorful-White-Suit-Look-800x534.jpg",
           size: "large",
           id: 5,
           linkUrl: "shop/mens",
+        },
+        {
+          title: "womens",
+          imageUrl:
+            "https://media1.popsugar-assets.com/files/thumbor/-hwJ6xTFUiT3MTLzb9YmjHPNHaU/1535x0:6999x5464/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2021/06/30/863/n/1922564/1b4606b060dcc95e91f871.50158233_/i/internet-famous-women-clothes-on-amazon.jpg",
+          size: "large",
+          id: 4,
+          linkUrl: "shop/womens",
         },
       ],
     };

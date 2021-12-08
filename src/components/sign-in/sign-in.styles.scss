@@ -6,3 +6,13 @@
 .title {
   margin: 10px 0;
 }
+
+@media screen and (max-width: 600px) {
+  .sign-in {
+    margin-bottom: 40px;
+  }
+  .buttons {
+    display: flex;
+    flex-direction: column;
+  }
+}

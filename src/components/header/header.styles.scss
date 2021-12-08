@@ -24,3 +24,12 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .logo {
+    width: 30px;
+    position: fixed;
+    top: 10px;
+    left: 20px;
+  }
+}

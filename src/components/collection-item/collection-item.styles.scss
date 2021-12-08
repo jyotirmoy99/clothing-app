@@ -50,3 +50,15 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .collection-item {
+    width: 250px;
+  }
+  .collection-footer {
+    margin-bottom: 50px;
+  }
+  .name {
+    font-weight: bolder;
+  }
+}
