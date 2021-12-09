@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
@@ -29,16 +29,13 @@ class App extends Component {
 
         userRef.onSnapshot((spanShot) => {
           setCurrentUser({
-            currentUser: {
-              id: spanShot.id,
-              ...spanShot.data(),
-            },
+            id: spanShot.id,
+            ...spanShot.data(),
           });
           console.log(this.state);
         });
-      } else {
-        setCurrentUser(userAuth);
       }
+      setCurrentUser(userAuth);
     });
   }
 
@@ -50,17 +47,17 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <Routes>
-          <Route exact path="/" element={<Homepage />} />
-          <Route path="/shop" element={<ShopPage />} />
+        <Switch>
+          <Route exact path="/" component={Homepage} />
+          <Route path="/shop" component={ShopPage} />
+          <Route path="/checkout" component={CheckoutPage} />
           <Route
             path="/signin"
-            element={
-              this.props.currentUser ? <Navigate to="/" /> : <SignInAndSignUp />
+            render={() =>
+              this.props.currentUser ? <Redirect to="/" /> : <SignInAndSignUp />
             }
           />
-          <Route path="/checkout" element={<CheckoutPage />} />
-        </Routes>
+        </Switch>
       </div>
     );
   }

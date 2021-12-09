@@ -8,10 +8,9 @@ import { toggleCartHidden } from "../../redux/cart/cart.actions";
 import "./cart-dropdown.styles.scss";
 
 import Button from "@mui/material/Button";
-import { useNavigate } from "react-router-dom";
+import { withRouter } from "react-router";
 
-const CartDropdown = ({ cartItems, dispatch }) => {
-  const navigate = useNavigate();
+const CartDropdown = ({ cartItems, history, dispatch }) => {
   return (
     <div className="cart-dropdown">
       <div className="cart-items">
@@ -27,7 +26,7 @@ const CartDropdown = ({ cartItems, dispatch }) => {
         variant="contained"
         size="small"
         onClick={() => {
-          navigate("/checkout", { replace: true });
+          history.push("/checkout");
           dispatch(toggleCartHidden());
         }}
       >
@@ -41,4 +40,4 @@ const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems,
 });
 
-export default connect(mapStateToProps)(CartDropdown);
+export default withRouter(connect(mapStateToProps)(CartDropdown));
